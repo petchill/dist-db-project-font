@@ -1,0 +1,55 @@
+@font-face{
+  font-family: 'gemunu-extrabold';
+  src: url('../../fonts/GemunuLibre-ExtraBold.ttf')
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondBar {
+  width: 100%;
+  height: 88px;
+  position: absolute;
+  top: 176px;
+}
+
+.myButton {
+  position: relative;
+  border: solid;
+  padding: 10px 30px;
+  margin-top: 50px;
+  transition: all .35s;
+  /* display: block; */
+  text-align: center;
+  margin: 50px;
+  font-size: 32px;
+  font-family: 'gemunu-extrabold';
+}
+
+.myButton:hover {
+  color: white;
+}
+
+.myButton:hover:after {
+  width: 100%;
+}
+
+.myButton span{
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.myButton:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #61dafb;
+  transition: all .35s;
+}

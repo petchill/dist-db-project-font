@@ -1,26 +1,85 @@
-import React from 'react';
-import logo from './logo.svg';
+import  React, {useState, useEffect} from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import Header from './component/header/header';
+import SecondBar from './component/second-bar/second-bar';
+import TopicTable from './component/topic-table/topic-table';
+import SignIn from './component/sign-in/sign-in';
+import SignUp from './component/sign-up/sign-up';
+import CreateRoom from './component/create-room/create-room';
+import RoomPage from './component/room-page/room-page';
 
-function App() {
+const App = props => {
+  const [currentPage, setCurrentPage] = useState(props.page.pageState)
+  useEffect(() => {
+    async function main(){
+      await setCurrentPage('roomPage');
+    }
+    main()
+  },[currentPage]);
+  const mainComponent = () => {
+    switch (props.page.pageState) {
+    // switch (currentPage) {
+      case 'home':
+        return (
+          <div>
+          <TopicTable />
+          <SecondBar />
+          </div>
+        );
+      case 'signIn':
+        return <SignIn />
+      case 'signUp':
+        return <SignUp />
+      case 'createRoom':
+        return <CreateRoom />
+      case 'roomPage':
+        return <RoomPage />
+      default:
+        return (
+        <TopicTable />,
+        <SecondBar />
+        )
+    }
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      {/* <SecondBar /> */}
+      {mainComponent()}
+      {/* <TopicTable /> */}
     </div>
+    
   );
 }
 
-export default App;
+const mapStatetoProps = (state) => {
+  return {
+    user: state.user,
+    page: state.page,
+  }
+}
+
+const mapDispatchtoProps = (dispatch) => {
+  return {
+    login:(username) => {
+      dispatch({
+        type: 'login',
+        payload: username
+      })
+    },
+    setRoom:  () => {
+      dispatch({
+        type: 'setRoom'
+      })
+    },
+    addRoom: (payload) => {
+      dispatch({
+        type: 'addRoom',
+        payload: payload
+      })
+    }
+  }
+}
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(App);

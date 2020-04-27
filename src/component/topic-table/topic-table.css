@@ -1,0 +1,43 @@
+#title {
+  text-align: center;
+  font-family: arial, sans-serif;
+}
+
+#students {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 80%;
+  margin: auto;
+}
+
+#students td, #students th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#students tr:nth-child(even){background-color: #f2f2f2;}
+
+#students tr:hover {background-color: #ddd;}
+
+#students th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topic-table {
+  width: 100%;
+  position: absolute;
+  top: 300px;
+  text-align: center;
+  justify-content: center;
+  background-color: #E9F4FF;
+}
+
+.topic-tag-list {
+  padding-left: 10px;
+}
