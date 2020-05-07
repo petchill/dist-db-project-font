@@ -45,6 +45,30 @@ const pageReducer = (state={
         pageState: state.pageState,
         roomState: action.payload
       }
+      break;
+    default:
+      break;
+  }
+  return state;
+}
+
+const searchReducer = (state={
+  searchAction: '',
+  searchValue: ''
+}, action) => {
+  switch (action.type){
+    case 'searchTopic':
+      state = {
+        searchAction: 'topic',
+        searchValue: action.payload
+      }
+      break;
+    case 'searchTag':
+      state = {
+        searchAction: 'tag',
+        searchValue: action.payload
+      }
+      break;
     default:
       break;
   }
@@ -52,6 +76,7 @@ const pageReducer = (state={
 }
 const allReducer = combineReducers({
   user: userReducer,
-  page: pageReducer
+  page: pageReducer,
+  search: searchReducer
 });
 export default allReducer;

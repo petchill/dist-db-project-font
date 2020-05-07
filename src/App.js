@@ -6,6 +6,7 @@ import SecondBar from './component/second-bar/second-bar';
 import TopicTable from './component/topic-table/topic-table';
 import SignIn from './component/sign-in/sign-in';
 import SignUp from './component/sign-up/sign-up';
+import SearchPage from './component/search-page/search-page'
 import CreateRoom from './component/create-room/create-room';
 import RoomPage from './component/room-page/room-page';
 
@@ -35,6 +36,8 @@ const App = props => {
         return <CreateRoom />
       case 'roomPage':
         return <RoomPage />
+      case 'searchPage':
+        return <SearchPage />
       default:
         return (
         <TopicTable />,
